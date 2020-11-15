@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个指定的Dao接口-->
+<mapper namespace="com.itcast.kuang.dao.UserDao">
+    <!--  这个id就代表了实现的那个dao中的抽象方法的名字  -->
+    <select id="getUserList" resultType="com.itcast.kuang.domain.User">
+    select * from mybatis.`user`
+  </select>
+</mapper>

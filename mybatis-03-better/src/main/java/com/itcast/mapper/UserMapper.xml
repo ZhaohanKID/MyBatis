@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个指定的Dao接口，代替UserDao的实现类-->
+<mapper namespace="com.UserMapper">
+    <resultMap id="UserList" type="User">
+        <!--    column对应    -->
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <!--  ResultMap结果集映射  -->
+    <select id="getUserById" resultMap="UserList">
+        select * from `user` where id = #{id}
+    </select>
+
+
+    <!--  这个id就代表了实现的那个dao中的抽象方法的名字  -->
+<!--    <select id="findUserList" resultType="User">
+    select * from `user`
+  </select>
+    <select id="getUserById" resultType="User" parameterType="int">
+        select * from `user` where id = #{id};
+    </select>
+    <insert id="insertUser" parameterType="com.User">
+        insert into `user` (id, username, password) values (#{id}, #{username}, #{password});
+    </insert>
+    <update id="update" parameterType="com.User">
+        update `user` set username = #{username}, password = #{password} where id = #{id};
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from `user` where id = #{id};
+    </delete>-->
+</mapper>

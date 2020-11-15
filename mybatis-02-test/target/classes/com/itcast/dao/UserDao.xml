@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个指定的Dao接口，代替UserDao的实现类-->
+<mapper namespace="com.itcast.dao.UserDao">
+    <!--  这个id就代表了实现的那个dao中的抽象方法的名字  -->
+    <select id="findUserList" resultType="com.itcast.domain.User">
+    select * from `user`
+  </select>
+    <select id="getUserById" resultType="com.itcast.domain.User" parameterType="int">
+        select * from `user` where id = #{id};
+    </select>
+    <select id="getUserById2" parameterType="map" resultType="com.itcast.domain.User">
+        select * from `user` where username = #{uname} and id = #{uid};
+    </select>
+    <select id="getUserList" resultType="com.itcast.domain.User">
+            --!select * from `user` where username like "%"#{username}"%";
+            select * from `user` where username like #{username};
+    </select>
+    <insert id="insertUser" parameterType="com.itcast.domain.User">
+        insert into `user` (id, username, password) values (#{id}, #{username}, #{password});
+    </insert>
+    <update id="update" parameterType="com.itcast.domain.User">
+        update `user` set username = #{username}, password = #{password} where id = #{id};
+    </update>
+    <update id="updateUser" parameterType="map">
+        update `user` set username = #{name} where id = #{uid}
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from `user` where id = #{id};
+    </delete>
+</mapper>
