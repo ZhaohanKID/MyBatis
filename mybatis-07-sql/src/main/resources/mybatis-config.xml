@@ -9,12 +9,14 @@
     <!--  日志日志  -->
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-
+    
+<!--  别名  -->
     <typeAliases>
-        <typeAlias type="com.itcast.pojo.Student" alias="Student"/>
-        <typeAlias type="com.itcast.pojo.Teacher" alias="Teacher"/>
+        <package name="com.kuang.pojo"/>
     </typeAliases>
+
 
     <environments default="development">
         <environment id="development">
@@ -30,8 +32,7 @@
 
 <!--  绑定接口，原先使用配置文件时候要绑定的是接口对应配置文件(简单理解为接口的实现类)  -->
     <mappers>
-        <mapper class="com.itcast.mapper.TeacherMapper"/>
-        <mapper class="com.itcast.mapper.StudentMapper"/>
+        <mapper class="com.kuang.dao.BlogMapper"/>
     </mappers>
 
 

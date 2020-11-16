@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个指定的Dao接口-->
+<!--       #{id}里面取出来的是前面@Param里面的id-->
+<mapper namespace="com.kuang.dao.UserMapper">
+    <select id="queryUsers" resultType="user">
+        select * from user where id = #{id};
+    </select>
+</mapper>

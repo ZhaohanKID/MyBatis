@@ -9,9 +9,11 @@
         <module name="mybatis-05-annotation" />
         <module name="mybatis-04-practice" />
         <module name="mybatis-03-better" />
+        <module name="mybatis-08-cache" />
         <module name="mybatis-02-test" />
         <module name="mybatis-01-base" />
         <module name="mybatis-06-complex" />
+        <module name="mybatis-07-sql" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="12" />

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--绑定一个指定的Dao接口，代替UserDao的实现类-->
-<mapper namespace="com.itcast.mapper.UserMapper">
+<mapper namespace="com.UserMapper">
     <resultMap id="UserList" type="User">
         <!--    column对应    -->
         <result column="id" property="id"/>

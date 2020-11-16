@@ -11,6 +11,11 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
+    <typeAliases>
+        <typeAlias type="com.itcast.pojo.Student" alias="Student"/>
+        <typeAlias type="com.itcast.pojo.Teacher" alias="Teacher"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

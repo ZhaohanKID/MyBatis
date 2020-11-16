@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--绑定一个指定的Dao接口-->
+<mapper namespace="com.kuang.dao.BlogMapper">
+
+    <!--  sql片段，将公共的部分抽取出来，方便复用  -->
+    <sql id="if-title-author">
+        <if test="title != null">
+            title = #{title}
+        </if>
+        <if test="author != null">
+            and author = #{author}
+        </if>
+    </sql>
+
+    <insert id="addBlog" parameterType="blog">
+        insert into blog(id, title, author, create_time, views)
+        values (#{id}, #{title}, #{author}, #{createTime}, #{views});
+    </insert>
+
+    <select id="queryBlogIf" parameterType="map" resultType="blog">
+--        select * from blog where 1 = 1
+--         正规的语句实际上不能出现 1 = 1，所以说应该使用where标签
+-- 这样就会自动匹配是不是第一个，是第一个就去掉and，加where....你懂意思
+            select * from blog
+        <where>
+            <include refid="if-title-author"></include>
+        </where>
+    </select>
+
+    <select id="queryBlogChoose" resultType="blog" parameterType="map">
+        select * from blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    title = #{title}
+                </when>
+                <when test="author != null">
+                    and author = #{author}
+                </when>
+                <otherwise>
+                    and views = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <select id="queryBlogForEach" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <foreach collection="ids" item="id" open="1 = 1 and(" separator="or" close=")">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <update id="updateBlog" parameterType="map">
+        update blog
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="author != null">
+                author = #{author}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

@@ -15,6 +15,8 @@
         <module>mybatis-04-practice</module>
         <module>mybatis-05-annotation</module>
         <module>mybatis-06-complex</module>
+        <module>mybatis-07-sql</module>
+        <module>mybatis-08-cache</module>
     </modules>
 
     <!--  父工程  -->
